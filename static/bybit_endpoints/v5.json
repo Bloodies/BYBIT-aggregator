@@ -1,0 +1,101 @@
+{
+  "market": {
+    "kline": {
+      "kline": "/v5/market/kline",
+      "mark_price": "/v5/market/mark-price-kline",
+      "index_price": "/v5/market/index-price-kline",
+      "premium_index_price": "/v5/market/premium-index-price-kline"
+    },
+    "orderbook": "/v5/market/orderbook",
+    "tickers": "/v5/market/tickers",
+    "history": "/v5/market/funding/history",
+    "recent_trade": "/v5/market/recent-trade",
+    "open_interest": "/v5/market/open-interest",
+    "historical_volatility": "/v5/market/historical-volatility",
+    "insurance": "/v5/market/insurance",
+    "instruments_info": "/v5/market/instruments-info",
+    "risk_limit": "/v5/market/risk-limit",
+    "delivery_price": "/v5/market/delivery-price"
+  },
+  "order": {
+    "create": "/v5/order/create",
+    "amend": "/v5/order/amend",
+    "cancel": "/v5/order/cancel",
+    "realtime": "/v5/order/realtime",
+    "cancel_all": "/v5/order/cancel-all",
+    "history": "/v5/order/history",
+    "create_batch": "/v5/order/create-batch",
+    "amend_batch": "/v5/order/amend-batch",
+    "cancel_batch": "/v5/order/cancel-batch",
+    "spot_borrow_check": "/v5/order/spot-borrow-check"
+  },
+  "position": {
+    "list": "/v5/position/list",
+    "set_leverage": "/v5/position/set-leverage",
+    "set_risk_limit": "/v5/position/set-risk-limit",
+    "trading_stop": "/v5/position/trading-stop",
+    "switch_isolated": "/v5/position/switch-isolated",
+    "switch_mode": "/v5/position/switch-mode",
+    "set_auto_add_margin": "/v5/position/set-auto-add-margin",
+    "closed_pnl": "/v5/position/closed-pnl",
+    "execution_list": "/v5/execution/list"
+  },
+  "account": {
+    "wallet_balance": "/v5/account/wallet-balance",
+    "upgrade_to_uta": "/v5/account/upgrade-to-uta",
+    "borrow_history": "/v5/account/borrow-history",
+    "collateral_info": "/v5/account/collateral-info",
+    "coin_greeks": "/v5/asset/coin-greeks",
+    "info": "/v5/account/info",
+    "transaction_log": "/v5/account/transaction-log",
+    "set_margin_mode": "/v5/account/set-margin-mode"
+  },
+  "spot_leverage_token": {
+    "info": "/v5/spot-lever-token/info",
+    "reference": "/v5/spot-lever-token/reference",
+    "purchase": "/v5/spot-lever-token/purchase",
+    "redeem": "/v5/spot-lever-token/redeem",
+    "order_record": "/v5/spot-lever-token/order-record"
+  },
+  "spot_margin_trade": {
+    "switch_mode": "/v5/spot-margin-trade/switch-mode",
+    "set_leverage": "/v5/spot-margin-trade/set-leverage",
+    "set_pledge_token": "/v5/spot-margin-trade/set-pledge-token"
+  },
+  "asset": {
+    "delivery_record": "/v5/asset/delivery-record",
+    "settlement_record": "/v5/asset/settlement-record",
+    "transfer": {
+      "inter_transfer": "/v5/asset/transfer/inter-transfer",
+      "query_inter_transfer_list": "v5/asset/transfer/query-inter-transfer-list",
+      "save_transfer_sub_member": "v5/asset/transfer/save-transfer-sub-member",
+      "universal_transfer": "/v5/asset/transfer/universal-transfer",
+      "query_universal_transfer_list": "/v5/asset/transfer/query-universal-transfer-list",
+      "query_transfer_coin_list": "/v5/asset/transfer/query-transfer-coin-list",
+      "query_sub_member_list": "/v5/asset/transfer/query-sub-member-list",
+      "query_account_coin_balance": "/v5/asset/transfer/query-account-coin-balance",
+      "query_asset_info": "/v5/asset/transfer/query-asset-info"
+    },
+    "deposit": {
+      "query_allowed_list": "/v5/asset/deposit/query-allowed-list",
+      "query_record": "/v5/asset/deposit/query-record",
+      "query_sub_member_record": "/v5/asset/deposit/query-sub-member-record",
+      "query_address": "/v5/asset/deposit/query-address",
+      "query_sub_member_address": "/v5/asset/deposit/query-sub-member-address"
+    },
+    "withdraw": {
+      "query_record": "/v5/asset/withdraw/query-record",
+      "create": "/v5/asset/withdraw/create",
+      "cancel": "/v5/asset/withdraw/cancel"
+    },
+    "query_info": "/v5/asset/coin/query-info",
+    "order_record": "/v5/asset/exchange/order-record"
+  },
+  "websocket_public": {
+    "spot": "wss://stream.bybit.com/v5/public/spot",
+    "linear": "wss://stream.bybit.com/v5/public/linear",
+    "inverse": "wss://stream.bybit.com/v5/public/inverse",
+    "option": "wss://stream.bybit.com/v5/public/option"
+  },
+  "websocket_private": "wss://stream.bybit.com/v5/private"
+}

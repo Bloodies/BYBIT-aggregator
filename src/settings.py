@@ -1,11 +1,15 @@
 """Module with environment for service."""
 
-import asyncio
+import json
 from pathlib import Path
 from enum import Enum
 
-from pydantic import AmqpDsn, DirectoryPath, Field
+import inject
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+from src.bybit.bybit import Bybit
+
 
 APP_DIR = Path(__file__).resolve(strict=True).parent.parent
 
@@ -40,6 +44,19 @@ class Settings(BaseSettings):
     log_level: LogLevel = LogLevel.INFO
 
 
+class BybitSettings(BaseSettings):
+    """Postgres connection settings."""
+
+    api_key: str = Field(description="Key for broker")
+    secret_key: str = Field(description="")
+    endpoints: dict | str = Field(validate_default=True)
+
+    @field_validator("endpoints", mode="before")
+    def validate_endpoints(cls, value: str) -> dict:
+        with open(APP_DIR / "static" / "bybit_endpoints" / value) as json_file:
+            return json.load(json_file)
+
+
 class ApplicationSettings(BaseSettings):
     """Application settings.
 
@@ -56,4 +73,23 @@ class ApplicationSettings(BaseSettings):
     )
 
     settings: Settings
-    api_key: str = Field(default=False, description="Key for broker")
+    bybit: BybitSettings
+
+
+def config(binder: inject.Binder) -> None:
+    """Bind application settings.
+
+    Args:
+        binder: The inject binder.
+    """
+    app_settings = ApplicationSettings()  # type: ignore # noqa: PGH003
+    binder.bind(ApplicationSettings, app_settings)
+    bybit = Bybit(
+        api_key=app_settings.bybit.api_key,
+        secret_key=app_settings.bybit.secret_key,
+        endpoints=app_settings.bybit.endpoints,
+    )
+    binder.bind(Bybit, bybit)
+
+
+inject.configure(config)

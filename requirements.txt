@@ -1,3 +1,5 @@
 click~=8.1.7
 inject~=5.2.1
 aioshutdown~=0.0.2
+pydantic~=2.8.2
+pydantic-settings~=2.4.0

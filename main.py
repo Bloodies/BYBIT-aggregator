@@ -19,7 +19,7 @@ def cli(app_settings: ApplicationSettings) -> None:
     logging.info("Load the following application settings: {}", app_settings)
     logging.configure(
         extra={
-            "api-key": app_settings.segment_path,
+            "api-key": app_settings.bybit.api_key,
         }
     )
 
@@ -35,4 +35,4 @@ def run_aggregator(event: asyncio.Event = asyncio.Event()) -> None:
 
 
 if __name__ == "__main__":
-    cli()
+    run_aggregator()
