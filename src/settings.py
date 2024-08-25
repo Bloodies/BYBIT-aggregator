@@ -48,7 +48,7 @@ class BybitSettings(BaseSettings):
     """Postgres connection settings."""
 
     api_key: str = Field(description="Key for broker")
-    secret_key: str = Field(description="")
+    api_secret: str = Field(description="")
     endpoints: dict | str = Field(validate_default=True)
 
     @field_validator("endpoints", mode="before")
@@ -86,7 +86,7 @@ def config(binder: inject.Binder) -> None:
     binder.bind(ApplicationSettings, app_settings)
     bybit = Bybit(
         api_key=app_settings.bybit.api_key,
-        secret_key=app_settings.bybit.secret_key,
+        secret_key=app_settings.bybit.api_secret,
         endpoints=app_settings.bybit.endpoints,
     )
     binder.bind(Bybit, bybit)

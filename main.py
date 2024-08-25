@@ -7,7 +7,7 @@ import inject
 from aioshutdown import Signal
 
 from src.settings import ApplicationSettings
-from src.logging import configure_logging
+from src.log_config import configure_logging
 from src.worker import worker
 
 
@@ -25,7 +25,7 @@ def cli(app_settings: ApplicationSettings) -> None:
 
 
 @cli.command(help="Run segment collector.")
-def run_aggregator(event: asyncio.Event = asyncio.Event()) -> None:
+def run_aggregator() -> None:
     """Run segment collector service."""
     logging.info("Aggregator startup")
 
